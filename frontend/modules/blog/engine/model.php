@@ -752,27 +752,28 @@ class FrontendBlogModel implements FrontendTagsInterface
 		if($comment['status'] == 'spam') return;
 
 		// build data for pushnotification
-		if($comment['status'] == 'moderation') $alert = array('loc-key' => 'NEW_COMMENT_TO_MODERATE');
-		else $alert = array('loc-key' => 'NEW_COMMENT');
+		if($comment['status'] == 'moderation') $key = 'BLOG_NEW_COMMENT_TO_MODERATE';
+		else $key = 'BLOG_NEW_COMMENT';
 
-		// get count of unmoderated items
-		$badge = (int) FrontendModel::getDB()->getVar(
-			'SELECT COUNT(i.id)
-			 FROM blog_comments AS i
-			 WHERE i.status = ? AND i.language = ?
-			 GROUP BY i.status',
-			array('moderation', FRONTEND_LANGUAGE)
+		$alert = array(
+			'loc-key' => $key,
+			'loc-args' => array(
+				$comment['author'],
+				$comment['text'],
+			)
 		);
 
-		// reset if needed
-		if($badge == 0) $badge = null;
-
 		// build data
-		$data = array('data' => array('endpoint' => SITE_URL . '/api/1.0', 'comment_id' => $comment['id']));
+		$data = array(
+			'data' => array(
+				'endpoint' => SITE_URL . '/api/1.0',
+				'module' => 'blog',
+				'comment_id' => $comment['id']
+			)
+		);
 
 		// push it
-		FrontendModel::pushToAppleApp($alert, $badge, null, $data);
-		FrontendModel::pushToMicrosoftApp('NEW_COMMENT', $badge, null, null, null, null, '/MainPage.xaml?website=' . SITE_URL, null); // @todo: clean this up
+		FrontendModel::pushToAppleApp($alert, null, 'default', $data);
 
 		// get settings
 		$notifyByMailOnComment = FrontendModel::getModuleSetting('blog', 'notify_by_email_on_new_comment', false);

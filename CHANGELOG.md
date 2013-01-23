@@ -16,7 +16,17 @@ Improvements:
 * Core: starting to use namespaces for the external classes that use namespaces.
 * Core: upgraded Spoon
 * Core: new CKFinder license, see: http://www.fork-cms.com/blog/detail/new-ck-finder-license
+* Core: merged all autoloaders in to one autoload.php.
+* Core: added the Symfony HttpFoundation and HttpKernel components via an AppKernel.
+* Core: added the Symfony DependencyInjection component to handle our services and config.
+* Core: the AppKernel is passed to all actions/models which contains the DI container.
+* Core: one frontcontroller which routes all requests (actions, ajax, cronjobs, ...)
+* Core: replaced globals*.php config files with app/config/config.yml.
+* Core: removed js.php
+* Spoon: Spoon dependency is now handled via composer.
 * Core: Include a non-official patch for CKeditor to fix an issue with the stylesheetparser on FF/Safari on Macs.
+* Blog: enabled Flip ahead for blogposts.
+* Core: enabled Flip ahead for paginated pages.
 
 Bugfixes:
 
@@ -25,7 +35,10 @@ Bugfixes:
 * DataGrid: do not overwrite existing row attributes when greying out a row.
 * Form: encode html entities in hidden field values to prevent XSS.
 * Mailmotor: add jsData to iframe template.
+* Location: Google Maps JS needs to be loaded before location.js, thx to siesqo.
+* Core: when fetching parameters take the index in account when computing the differences.
 * Blog: Use full links for the navigation below the blogposts.
+* FormBuilder: validation (email, numeric) was inherited from previously added fields causing errors on checkboxes.
 
 
 3.4.4 (2012-09-12)
