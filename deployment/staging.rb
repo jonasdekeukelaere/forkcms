@@ -1,1 +1,1 @@
-set :branch, "master"
+set :branch, "release-3.5-wip"
