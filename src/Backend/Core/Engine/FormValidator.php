@@ -21,39 +21,7 @@ class FormValidator
      */
     public function __construct(Form $form, array $rules)
     {
-        $this->setForm($form);
-        $this->setRules($rules);
-    }
-
-    /**
-     * @return Form
-     */
-    public function getForm()
-    {
-        return $this->form;
-    }
-
-    /**
-     * @param Form $form
-     */
-    public function setForm($form)
-    {
         $this->form = $form;
-    }
-
-    /**
-     * @return array
-     */
-    public function getRules()
-    {
-        return $this->rules;
-    }
-
-    /**
-     * @param array $rules
-     */
-    public function setRules(array $rules)
-    {
         $this->rules = $rules;
     }
 

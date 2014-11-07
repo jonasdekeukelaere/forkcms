@@ -18,21 +18,7 @@ class ModelForm extends Form
     public function __construct($name, array $record = array())
     {
         parent::__construct($name);
-    }
 
-    /**
-     * @return array
-     */
-    public function getRecord()
-    {
-        return $this->record;
-    }
-
-    /**
-     * @param array $record
-     */
-    public function setRecord($record)
-    {
         $this->record = $record;
     }
 
