@@ -1,8 +1,6 @@
 <?php
 namespace Backend\Core\Engine;
 
-use Backend\Core\Engine\Form;
-
 class FormValidator
 {
     /**
@@ -16,10 +14,10 @@ class FormValidator
     protected $rules = array();
 
     /**
-     * @param Form  $form
-     * @param array $rules
+     * @param ModelForm  $form
+     * @param array      $rules
      */
-    public function __construct(Form $form, array $rules)
+    public function __construct(ModelForm $form, array $rules)
     {
         $this->form = $form;
         $this->rules = $rules;
