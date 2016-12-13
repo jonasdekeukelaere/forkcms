@@ -147,6 +147,7 @@ class TwigTemplate extends BaseTwigTemplate
                 $this->themePath,
                 FRONTEND_MODULES_PATH,
                 FRONTEND_PATH,
+//                '/'
             ),
             function ($folder) use ($filesystem) {
                 return $filesystem->exists($folder);

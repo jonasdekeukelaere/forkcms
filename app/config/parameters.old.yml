@@ -1,0 +1,24 @@
+parameters:
+    database.driver:        mysql
+    database.host:          10.11.12.13
+    database.port:          3306
+    database.name:          forkcms_forkcms
+    database.user:          root
+    database.password:      root
+
+    kernel.secret:          LI4RPWU9IxZlU335lIRcoBsOfiZQYPwd
+
+    fork.debug_email:       debug@teracon.be
+    fork.debug_message:     'Internal error.'
+    fork.version:           '3.9.6'
+
+    site.protocol:          http
+    site.domain:            forkcms.forkcms.dev
+    site.default_title:     Fork CMS
+    site.multilanguage:     true
+    site.default_language:  en
+    site.path_www:          %kernel.root_dir%/..
+    site.path_library:      %site.path_www%/library
+
+    action.group_tag:       \@actiongroup
+    action.rights_level:    7

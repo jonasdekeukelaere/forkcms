@@ -9,6 +9,7 @@ namespace Frontend\Modules\Profiles\Actions;
  * file that was distributed with this source code.
  */
 
+use Common\Mailer\Message;
 use Frontend\Core\Engine\Base\Block as FrontendBaseBlock;
 use Frontend\Core\Engine\Form as FrontendForm;
 use Frontend\Core\Language\Language as FL;
@@ -35,6 +36,31 @@ class Login extends FrontendBaseBlock
     public function execute()
     {
         parent::execute();
+
+
+
+//        $templatePath = 'Profiles/Layout/Templates/Mails/Test.html.twig';
+        $templatePath = 'Core/Layout/Templates/Mails/Notification.html.twig';
+//        die;
+
+        // create a message object and set all the needed properties
+        $message = Message::newInstance('BOO')
+            ->parseHtml($templatePath, ['message' => 'BOO'], true)
+        ;
+
+
+        die;
+
+
+        $message = Message::newInstance();
+//        $message->parseHtml('Profiles/Layout/Templates/Mails/Test.html.twig', []);
+        $message->parseHtml(
+            FRONTEND_CORE_PATH . '/Layout/Templates/Mails/Notification.html.twig',
+            ['message' => 'HELLO FRONTEND CORE']
+        );
+
+
+        die;
 
         // profile not logged in
         if (!FrontendProfilesAuthentication::isLoggedIn()) {

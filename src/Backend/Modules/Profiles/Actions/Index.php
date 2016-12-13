@@ -17,6 +17,7 @@ use Backend\Core\Engine\Form as BackendForm;
 use Backend\Core\Language\Language as BL;
 use Backend\Core\Engine\Model as BackendModel;
 use Backend\Modules\Profiles\Engine\Model as BackendProfilesModel;
+use Common\Mailer\Message;
 
 /**
  * This is the index-action, it will display the overview of profiles.
@@ -95,6 +96,15 @@ class Index extends BackendBaseActionIndex
     public function execute()
     {
         parent::execute();
+
+
+        $message = Message::newInstance();
+        $message->parseHtml('Profiles/Layout/Templates/Mails/Test.html.twig', []);
+
+
+
+        die;
+
         $this->setFilter();
         $this->loadForm();
         $this->loadDataGrid();
